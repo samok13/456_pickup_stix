@@ -1,0 +1,22 @@
+<h1> Users </h1>
+  <% @users.each do |user| %>
+    <%= link_to "#{user.first_name} #{user.last_name}", user_path(user) %>, 
+    (<%= user.playlists.count %>)
+  <br>
+  <% end %>  
+
+  <!-- <h2> Sign Up </h2>
+  <= form_tag session_path do %>
+   <label_tag :first_name %>
+  < text_field :first_name  %>
+   <label_tag :last_name  %>
+  < text_field :last_name %>
+  <label_tag :email %>
+  < text_field :email %>
+  < label :password %>
+  <= password_field :password %>
+   <= label :password_confirmation %>
+  <= password_field :password_confirmation %>
+  <= submit_tag "Sign Up" %>
+  <end%> -->
+<br>

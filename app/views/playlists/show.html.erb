@@ -1,0 +1,20 @@
+
+<h2> Songs </h2>
+<% @playlist.songs.each do |song| %>
+    <%= link_to "#{song.name}", song_path(song) %>
+<br>
+    <%= link_to "#{song.artist.name}", artist_path(song.artist) %>
+<br>
+  (<%= link_to "Remove Song", song_path(song), method: :delete, data: {:confirm => 'Are you sure?'} %>)
+<br>
+<br>
+<% end %>
+<!-- To add
+< if !current_user.bookmark %>
+  <button> Bookmark </button>
+  < else %>
+   <button> Unbookmark </button>
+< end %> -->
+
+
+    

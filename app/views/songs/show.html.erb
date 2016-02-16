@@ -1,0 +1,8 @@
+<h1> Song </h1>
+
+<h2> <%= link_to "#{@song.artist.name}", artist_path(@song.artist) %> </h2>
+
+<%= form_for current_user do |u| %>
+<% select(:playlist, @current_user.playlist) %>
+<% end %>
+
