@@ -4,6 +4,7 @@ describe ApplicationController do
   let(:user) { create(:user) }
   let(:other_user) { create(:user) }
 
+
   controller do
     before_action :require_login, :only => [:index]
     before_action :require_current_user, :only => [:show]
@@ -21,6 +22,7 @@ describe ApplicationController do
       render :text => 'New'
     end
   end
+
 
   # ----------------------------------------
   # #current_user

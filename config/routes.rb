@@ -1,14 +1,18 @@
 Rails.application.routes.draw do
 
-  root 'users#index'
+  root 'sessions#new'
 
   resources :users
 
   resources :playlists
 
+  resources :playlist_selections
+
   resources :songs, only: :show
 
   resources :artists
+
+  resources :bookmarks
 
   resource :session, :only => [:new, :create, :destroy]
   get "login" => "sessions#new"

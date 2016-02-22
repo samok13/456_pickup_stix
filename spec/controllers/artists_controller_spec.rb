@@ -4,10 +4,11 @@ describe ArtistsController do
   let(:user) { create(:user) }
   let(:artist) { create(:artist) }
 
-
   before do
     artist
   end
+
+
 
   # ----------------------------------------
   # GET #index
@@ -28,6 +29,7 @@ describe ArtistsController do
       expect(assigns[:artists]).to be_kind_of(ActiveRecord::Relation)
     end
   end
+
 
   # ----------------------------------------
   # GET #show

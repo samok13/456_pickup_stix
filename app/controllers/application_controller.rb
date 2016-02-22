@@ -3,22 +3,6 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-
-  def current_user
-     @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    # unless @current_user && @current_user.auth_token == session[:auth_token]
-    #   @current_user = User.find_by_auth_token(session[:auth_token])
-    # end
-  end
-  helper_method :current_user
-
-
-  def signed_in_user?
-    !!current_user
-  end
-  helper_method :signed_in_user?
-
-
   def is_current_user?(user)
     signed_in_user? && user.id == current_user.id
   end
@@ -43,8 +27,8 @@ class ApplicationController < ActionController::Base
     unless signed_in_user?
       #unless request.path == root_path
       flash[:error] = 'That action requires you to be logged in'
+      redirect_to login_path
     end
-    redirect_to login_path
   end
 
 
@@ -62,5 +46,21 @@ class ApplicationController < ActionController::Base
       redirect_to root_url
     end
   end 
+
+private
+
+  def current_user
+     @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    # unless @current_user && @current_user.auth_token == session[:auth_token]
+    #   @current_user = User.find_by_auth_token(session[:auth_token])
+    # end
+  end
+  helper_method :current_user
+
+
+  def signed_in_user?
+    !!current_user
+  end
+  helper_method :signed_in_user?
 
 end

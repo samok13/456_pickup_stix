@@ -1,0 +1,5 @@
+<%= form_tag playlist_selections_path do %>
+      <%= collection_select(:playlist_selection, :playlist_id , current_user.playlists, :id, :name ) %>
+      <%= hidden_field_tag 'playlist_selection[song_id]', song.id %>
+      <%= submit_tag "Add to Playlist" %>
+    <% end %>

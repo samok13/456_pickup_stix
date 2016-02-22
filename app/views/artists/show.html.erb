@@ -1,0 +1,30 @@
+<h1><%= @artist.name %></h1>
+
+<h2> Song Titles </h2>
+  <% @artist.songs.each do |song| %>
+  <%= link_to song.name, song_path(song) %>
+
+  <% if signed_in_user? %>
+    <%= form_tag playlist_selections_path do %>
+      <%= collection_select(:playlist_selection, :playlist_id , current_user.playlists, :id, :name ) %>
+      <%= hidden_field_tag 'playlist_selection[song_id]', song.id %>
+      <%= submit_tag "Add to Playlist" %>
+    <% end %>
+
+    <% bookmark = current_user.bookmarks.where(:bookmarkable_id => song.id).first %>
+
+    <% if bookmark %>
+      <%= form_tag bookmark_path(bookmark), method: :delete do %>
+        <%= submit_tag "UnBookmark" %>
+      <% end %>
+      <br>
+
+    <% else %>
+      <%= form_tag bookmarks_path do %>
+        <%= hidden_field_tag 'bookmark[bookmarkable_type]', 'Song' %>
+        <%= hidden_field_tag 'bookmark[bookmarkable_id]', song.id %>
+        <%= submit_tag "Bookmark" %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

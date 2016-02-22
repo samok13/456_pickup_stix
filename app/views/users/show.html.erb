@@ -5,20 +5,27 @@
     <%= link_to "#{playlist.name}", playlist_path(playlist) %>
 <br>
 <% end %>
+
+<%= link_to "Create a New Playlist", new_playlist_path %>
     
 <h2> Bookmarks </h2>
 
 <% @user.bookmarks.each do |bookmark| %>
- <!--  < if bookmarkable.is_a? Artist %>
-  if bookmarkable.is_a? Song
-  if bookmarkable.is_a? Playlist -->
-    <%= link_to "#{bookmark.bookmarkable.name}", playlist_path(bookmark) %>
-
-(<%= link_to "Remove Bookmark", playlist_path(bookmark), method: :delete, data: {:confirm => 'Are you sure?'} %>)
-<br>
+  <% if bookmark.bookmarkable.is_a? Artist %>
+    <% path = artist_path(bookmark.bookmarkable) %>
+    <% elsif bookmark.bookmarkable.is_a? Song %>
+    <% path = song_path(bookmark.bookmarkable) %>
+    <% else %>
+    <% path = playlist_path(bookmark.bookmarkable) %>
+  <% end %>
+    <%= link_to "#{bookmark.bookmarkable.name}", path %>
+    (<%= link_to "Remove Bookmark", bookmark_path(bookmark), method: :delete, data: {:confirm => 'Are you sure?'} %>)
+  <br>
 <% end %>
 <br>
+
+<br>
 <h3>
-<%= link_to "Edit", edit_user_path(@user) %>
-<%= link_to "Delete", user_path(@user), method: :delete, data: {:confirm => 'Are you sure?'} %>
+<%= link_to "Edit User", edit_user_path(@user) %>
+<%= link_to "Delete User", user_path(@user), method: :delete, data: {:confirm => 'Are you sure?'} %>
 </h3>

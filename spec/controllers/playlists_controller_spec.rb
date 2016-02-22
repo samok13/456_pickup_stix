@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+
 describe PlaylistsController do
   let(:user) { create(:user) }
   let(:playlist) { create(:playlist, :user => user) }
@@ -8,6 +9,7 @@ describe PlaylistsController do
   before do
     set_http_referer
   end
+
 
   # ----------------------------------------
   # GET #show

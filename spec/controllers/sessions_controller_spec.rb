@@ -8,11 +8,9 @@ describe SessionsController do
         :password => user.password
   end
 
-
   before do
     user
   end
-
 
   describe 'GET #new' do
     it 'renders the new template' do

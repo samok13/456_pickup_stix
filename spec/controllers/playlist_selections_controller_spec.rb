@@ -1,12 +1,12 @@
 require 'rails_helper'
 
+
 describe PlaylistSelectionsController do
   let(:user) { create(:user) }
   let(:artist) { create(:artist) }
   let(:song) { create(:song, :artist => artist) }
   let(:playlist) { create(:playlist, :user => user) }
   let(:playlist_selection) { create(:playlist_selection, :song => song, :playlist => playlist) }
-
 
   before do
     set_http_referer

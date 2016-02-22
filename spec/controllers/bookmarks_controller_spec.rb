@@ -1,10 +1,10 @@
 require 'rails_helper'
 
+
 describe BookmarksController do
   let(:user) { create(:user) }
   let(:artist) { create(:artist) }
   let(:bookmark) { create(:artist_bookmark, :user => user, :bookmarkable => artist) }
-
 
   before do
     set_http_referer

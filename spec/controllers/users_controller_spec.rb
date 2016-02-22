@@ -8,7 +8,6 @@ describe UsersController do
     set_http_referer
   end
 
-
   # ----------------------------------------
   # GET #show
   # ----------------------------------------
